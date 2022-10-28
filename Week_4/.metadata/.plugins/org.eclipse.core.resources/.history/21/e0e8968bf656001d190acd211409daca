@@ -1,0 +1,11 @@
+package kodlama.io.Devs.business.abstracts;
+
+import java.util.List;
+
+public interface ProgrammingLanguageService {
+	List<ProgrammingLanguageService> getAll();
+	void add(ProgrammingLanguageService programmingLanguageService);
+	void delete(int id);
+	void update(ProgrammingLanguageService programmingLanguageService);
+	ProgrammingLanguage getById(int id);
+}

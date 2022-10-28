@@ -1,0 +1,70 @@
+package kodlama.io.Devs.dataAccess.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.stereotype.Repository;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
+import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
+
+@Repository
+public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguageRepository{
+
+	List<ProgrammingLanguages> programmingLanguages;
+	
+	
+	public InMemoryProgrammingLanguageRepository() {
+		programmingLanguages = new ArrayList<ProgrammingLanguages>();
+		programmingLanguages.add(new ProgrammingLanguages(1, "Java"));
+		programmingLanguages.add(new ProgrammingLanguages(2, "C#"));
+		programmingLanguages.add(new ProgrammingLanguages(3, "Python"));
+		programmingLanguages.add(new ProgrammingLanguages(4, "PHP"));
+		programmingLanguages.add(new ProgrammingLanguages(5, "R"));
+	}
+
+	@Override
+	public List<ProgrammingLanguages> getAll() {
+		
+		return programmingLanguages;
+	}
+
+	@Override
+	public void add(ProgrammingLanguages programmingLanguage) {
+		programmingLanguages.add(programmingLanguage);
+		
+	}
+
+	@Override
+	public void delete(ProgrammingLanguages programmingLanguage) {
+		for (ProgrammingLanguages language : programmingLanguages) {
+			if (language.getId()==programmingLanguage.getId()) {
+				programmingLanguages.remove(language);
+			}
+		}
+		
+	}
+
+	@Override
+	public ProgrammingLanguages getById(int id) {
+		for (ProgrammingLanguages language : programmingLanguages) {
+			if (language.getId()==id) {
+				return language;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void update(ProgrammingLanguages programmingLanguage) {
+		for (ProgrammingLanguages language : programmingLanguages) {
+			if (language.getId()==programmingLanguage.getId()) {
+				language.setName(language.getName());
+			}
+		}
+		
+	}
+
+	
+
+}

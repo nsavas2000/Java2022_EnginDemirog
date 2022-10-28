@@ -1,0 +1,64 @@
+package kodlama.io.Devs.dataAccess.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
+import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
+
+
+public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguageRepository{
+
+	List<ProgrammingLanguages> programmingLanguages;
+	
+	
+	public InMemoryProgrammingLanguageRepository() {
+		programmingLanguages = new ArrayList<ProgrammingLanguages>();
+		programmingLanguages.add(new ProgrammingLanguages(1, "Java"));
+		programmingLanguages.add(new ProgrammingLanguages(2, "C#"));
+		programmingLanguages.add(new ProgrammingLanguages(3, "Python"));
+		programmingLanguages.add(new ProgrammingLanguages(4, "PHP"));
+		programmingLanguages.add(new ProgrammingLanguages(5, "R"));
+	}
+
+	@Override
+	public List<ProgrammingLanguages> getAll() {
+		
+		return programmingLanguages;
+	}
+
+	@Override
+	public void add(ProgrammingLanguages programmingLanguage) {
+		programmingLanguages.add(programmingLanguage);
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		for (ProgrammingLanguages language : programmingLanguages) {
+			if (language.getId()==id) {
+				programmingLanguages.remove(language);
+			}
+		}
+		
+	}
+
+	@Override
+	public ProgrammingLanguages getById(int id) {
+		for (ProgrammingLanguages language : programmingLanguages) {
+			if (language.getId()==id) {
+				return language;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void update(ProgrammingLanguages programmingLanguage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}
