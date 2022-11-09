@@ -1,0 +1,7 @@
+package kodlama.io.Devs.dataAccess.abstracts;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProgrammingLanguagesTechnologyRepository extends JpaRepository<ProgrammingLanguagesTechnologyRepository, Integer>{
+
+}

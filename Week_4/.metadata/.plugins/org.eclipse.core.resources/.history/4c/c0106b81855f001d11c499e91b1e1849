@@ -1,0 +1,19 @@
+package kodlama.io.Devs.entities.concretes;
+
+import org.apache.logging.log4j.message.AsynchronouslyFormattable;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name="ProgrammingLanguage")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProgrammingLanguages {
+	private int id;
+	private String name;
+	
+	
+	
+}

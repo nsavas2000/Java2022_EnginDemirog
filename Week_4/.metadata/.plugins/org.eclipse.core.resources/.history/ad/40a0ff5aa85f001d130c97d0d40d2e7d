@@ -1,0 +1,9 @@
+package kodlama.io.Devs.business.responses;
+
+public class GetAllProgrammingLanguagesResponse {
+	
+	private int id;
+	private String name;
+	
+
+}

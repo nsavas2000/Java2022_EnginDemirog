@@ -1,11 +1,17 @@
 package kodlama.io.Devs.business.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.UpdateProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
 import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
 
@@ -23,47 +29,82 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 
 	@Override
-	public List<ProgrammingLanguages> getAll() {
+	public List<GetAllProgrammingLanguagesResponse> getAll() {
 		
-		return languageRepository.getAll();
+		List<ProgrammingLanguages> programmingLanguages = languageRepository.findAll();
+		List<GetAllProgrammingLanguagesResponse> languagesResponses = new ArrayList<GetAllProgrammingLanguagesResponse>();
+		
+		for (ProgrammingLanguages language : programmingLanguages) {
+			GetAllProgrammingLanguagesResponse responseItem = new GetAllProgrammingLanguagesResponse();
+			responseItem.setId(language.getId());
+			responseItem.setName(language.getName());
+			languagesResponses.add(responseItem);
+			
+		}
+		
+		return languagesResponses;
+		
 	}
 
 
 	@Override
-	public void add(ProgrammingLanguages programmingLanguage) throws Exception{
+	public void add(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) throws Exception{
 		
-		if (programmingLanguage.getName().isEmpty() || programmingLanguage.getName().isBlank()) {
-			throw new Exception("Programlama dili boş geçilemez!");
+		
+		if (createProgrammingLanguagesRequest.getName().isEmpty() || createProgrammingLanguagesRequest.getName().isBlank()) {
+			throw new Exception("Bos deger gecilemez!");
 		}
 		
-		for (ProgrammingLanguages language : this.languageRepository.getAll()) {
-			if (language.getName().equals(programmingLanguage.getName())) {
-				throw new Exception("Programlama dili isimleri aynı ola	maz!");
+		for (ProgrammingLanguages language : this.languageRepository.findAll()) {
+			if (language.getName().equals(createProgrammingLanguagesRequest.getName())) {
+				throw new Exception("Sistemde boyle bir kayir mevcuttur!");
 			}
 			
 		}
 		
-		languageRepository.add(programmingLanguage);
+		ProgrammingLanguages programmingLanguage = new ProgrammingLanguages();
+		programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
+		
+		languageRepository.save(programmingLanguage);
+		
 			
 		}
 	
 
 	@Override
-	public void delete(ProgrammingLanguages programmingLanguage) {
-		languageRepository.delete(programmingLanguage);
+	public void delete(DeleteProgrammingLanguagesRequest deleteProgrammingLanguagesRequest) {
+		languageRepository.deleteById(deleteProgrammingLanguagesRequest.getId());
 		
 	}
 
 	@Override
-	public void update(ProgrammingLanguages programmingLanguage) {
-		languageRepository.update(programmingLanguage);
+	public void update(UpdateProgrammingLanguagesRequest updateProgrammingLanguagesRequest) throws Exception {
+		
+	if (updateProgrammingLanguagesRequest.getName().isEmpty() || updateProgrammingLanguagesRequest.getName().isBlank()) {
+		throw new Exception("Bos deger gecilemez!");
+	}
+	
+	for (ProgrammingLanguages language : this.languageRepository.findAll()) {
+		if (language.getName().equals(updateProgrammingLanguagesRequest.getName())) {
+			throw new Exception("Programlama dili isimleri aynı olamaz!");
+		}
 		
 	}
+	
+	ProgrammingLanguages programmingLanguage = languageRepository.findById(updateProgrammingLanguagesRequest.getId()).get();
+	programmingLanguage.setName(updateProgrammingLanguagesRequest.getName());
+	languageRepository.save(programmingLanguage);
+	
+}
 
 	@Override
-	public ProgrammingLanguages getById(int id) {
+	public GetByIdProgrammingLanguageResponse getById(int id) {
 		
-		return languageRepository.getById(id);
+		ProgrammingLanguages programmingLanguages = languageRepository.findById(id).get();
+		GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse = new GetByIdProgrammingLanguageResponse();
+		getByIdProgrammingLanguageResponse.setName(programmingLanguages.getName());
+		
+		return getByIdProgrammingLanguageResponse;
 	}
 
 
