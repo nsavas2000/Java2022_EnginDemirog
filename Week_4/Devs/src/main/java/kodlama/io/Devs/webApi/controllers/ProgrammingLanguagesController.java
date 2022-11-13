@@ -14,7 +14,7 @@ import kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
 import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
 import kodlama.io.Devs.business.requests.UpdateProgrammingLanguagesRequest;
-import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageResponse;
 import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
 
 
@@ -31,7 +31,7 @@ public class ProgrammingLanguagesController {
 	}
 	
 	@GetMapping("/getall")
-	public List<GetAllProgrammingLanguagesResponse> getAll(){
+	public List<GetAllProgrammingLanguageResponse> getAll(){
 		return programmingLanguageService.getAll();
 		
 	}

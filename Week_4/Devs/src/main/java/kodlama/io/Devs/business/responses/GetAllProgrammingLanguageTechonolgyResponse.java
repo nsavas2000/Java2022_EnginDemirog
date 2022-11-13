@@ -12,5 +12,5 @@ public class GetAllProgrammingLanguageTechonolgyResponse {
 	private String name;
 	private int programmingLanguageId;
 	private String programmingLanguage;
-
+	
 }

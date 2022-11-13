@@ -1,0 +1,78 @@
+package kodlama.io.Devs.business.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import kodlama.io.Devs.business.abstracts.ProgrammingLanguagesTechnologyServise;
+import kodlama.io.Devs.business.requests.CreatProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.UpdateProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageTechonolgyResponse;
+import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageTechnologyResponse;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguagesTechnologyRepository;
+import kodlama.io.Devs.entities.concretes.ProgrammingLanguageTechnology;
+import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
+
+
+public class ProgrammingLanguageTechonologyManager implements ProgrammingLanguagesTechnologyServise {
+
+	private ProgrammingLanguagesTechnologyRepository programmingLanguagesTechnologyRepository;
+	private ProgrammingLanguageRepository programmingLanguageRepository;
+	
+	
+	public ProgrammingLanguageTechonologyManager(
+			ProgrammingLanguagesTechnologyRepository programmingLanguagesTechnologyRepository,
+			ProgrammingLanguageRepository programmingLanguageRepository) {
+		
+		this.programmingLanguagesTechnologyRepository = programmingLanguagesTechnologyRepository;
+		this.programmingLanguageRepository = programmingLanguageRepository;
+	}
+
+	@Override
+	public List<GetAllProgrammingLanguageTechonolgyResponse> getAll() {
+		List<ProgrammingLanguageTechnology> programmingLanguagesTechnology = programmingLanguagesTechnologyRepository.findAll();
+		List<GetAllProgrammingLanguageTechonolgyResponse> getAllProgrammingLanguagesTechonologyResponse = new ArrayList<GetAllProgrammingLanguageTechonolgyResponse>();
+		for (ProgrammingLanguageTechnology programmingTechnology : programmingLanguagesTechnology) {
+			GetAllProgrammingLanguageTechonolgyResponse responseItem = new GetAllProgrammingLanguageTechonolgyResponse();
+			responseItem.setId(programmingTechnology.getId());
+			responseItem.setName(programmingTechnology.getName());
+			responseItem.setProgrammingLanguage(programmingTechnology.getProgrammingLanguages().getName());
+			responseItem.setProgrammingLanguageId(programmingTechnology.getProgrammingLanguages().getId());
+		}
+		return getAllProgrammingLanguagesTechonologyResponse;
+	}
+
+	@Override
+	public void add() {
+		ProgrammingLanguageTechnology programmingLanguageTechnology = new ProgrammingLanguageTechnology();
+		ProgrammingLanguages programmingLanguages = 
+				
+		
+	}
+
+	
+
+	
+
+	@Override
+	public void delete(DeleteProgrammingLanguageTechonologyRequest deleteProgrammingLanguageTechnology) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(UpdateProgrammingLanguageTechonologyRequest updateProgrammingLanguageTechnology) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
+
+}

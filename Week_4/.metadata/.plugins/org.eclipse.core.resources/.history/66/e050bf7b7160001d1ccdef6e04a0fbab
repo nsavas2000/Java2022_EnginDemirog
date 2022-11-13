@@ -1,0 +1,55 @@
+package kodlama.io.Devs.business.concretes;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+
+import kodlama.io.Devs.business.abstracts.ProgrammingLanguagesTechnologyServise;
+import kodlama.io.Devs.business.requests.CreatProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguagesTechnologyRepository;
+
+public class ProgrammingLanguageTechonologyManager implements ProgrammingLanguagesTechnologyServise {
+
+	@Override
+	public List<GetAllProgrammingLanguagesResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(CreateProgrammingLanguagesRequest createProgrammingLanguageTechnologyRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(DeleteProgrammingLanguagesRequest deleteProgrammingLanguageTechnologyRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(CreatProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public GetByIdProgrammingLanguageResponse getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

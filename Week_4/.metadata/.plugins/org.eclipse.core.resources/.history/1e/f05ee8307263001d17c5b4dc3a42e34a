@@ -1,0 +1,56 @@
+package kodlama.io.Devs.webApi.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import kodlama.io.Devs.business.abstracts.ProgrammingLanguagesTechnologyServise;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.requests.UpdateProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageTechonolgyResponse;
+
+@RestController
+@RequestMapping("/api/programmingtechonologies")
+public class ProgrammingTechnologiesController {
+
+	private ProgrammingLanguagesTechnologyServise programmingLanguagesTechnologyServise;
+
+	@Autowired
+	public ProgrammingTechnologiesController(
+			ProgrammingLanguagesTechnologyServise programmingLanguagesTechnologyServise) {
+		
+		this.programmingLanguagesTechnologyServise = programmingLanguagesTechnologyServise;
+	}
+	
+	@GetMapping("/getall")
+	public List<GetAllProgrammingLanguageTechonolgyResponse> getAll(){
+		return programmingLanguagesTechnologyServise.getAll();
+	}
+	
+	@PostMapping("/add")
+	public void add(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) throws Exception{
+		programmingLanguagesTechnologyServise.add(createProgrammingLanguageTechnologyRequest);
+	}
+	
+	@DeleteMapping("/delete")
+	public void delete(DeleteProgrammingLanguageTechonologyRequest deleteProgrammingLanguageTechonologyRequest) {
+		programmingLanguagesTechnologyServise.delete(deleteProgrammingLanguageTechonologyRequest);
+		
+	}
+	
+	@PutMapping("/update")
+	public void update(UpdateProgrammingLanguageTechonologyRequest updateProgrammingLanguageTechonologyRequest) {
+		programmingLanguagesTechnologyServise.update(updateProgrammingLanguageTechonologyRequest);
+	}
+	
+	
+	
+	
+}

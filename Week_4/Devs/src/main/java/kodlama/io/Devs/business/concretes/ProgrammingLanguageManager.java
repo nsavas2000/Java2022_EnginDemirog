@@ -10,7 +10,7 @@ import kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
 import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
 import kodlama.io.Devs.business.requests.UpdateProgrammingLanguagesRequest;
-import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageResponse;
 import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
 import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
@@ -18,24 +18,24 @@ import kodlama.io.Devs.entities.concretes.ProgrammingLanguages;
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
-	private ProgrammingLanguageRepository languageRepository;
+	private ProgrammingLanguageRepository programmingLanguageRepository;
 	
 	
 	@Autowired
-	public ProgrammingLanguageManager(ProgrammingLanguageRepository languageRepository) {
+	public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
 		
-		this.languageRepository = languageRepository;
+		this.programmingLanguageRepository = programmingLanguageRepository;
 	}
 
 
 	@Override
-	public List<GetAllProgrammingLanguagesResponse> getAll() {
+	public List<GetAllProgrammingLanguageResponse> getAll() {
 		
-		List<ProgrammingLanguages> programmingLanguages = languageRepository.findAll();
-		List<GetAllProgrammingLanguagesResponse> languagesResponses = new ArrayList<GetAllProgrammingLanguagesResponse>();
+		List<ProgrammingLanguages> programmingLanguages = programmingLanguageRepository.findAll();
+		List<GetAllProgrammingLanguageResponse> languagesResponses = new ArrayList<GetAllProgrammingLanguageResponse>();
 		
 		for (ProgrammingLanguages language : programmingLanguages) {
-			GetAllProgrammingLanguagesResponse responseItem = new GetAllProgrammingLanguagesResponse();
+			GetAllProgrammingLanguageResponse responseItem = new GetAllProgrammingLanguageResponse();
 			responseItem.setId(language.getId());
 			responseItem.setName(language.getName());
 			languagesResponses.add(responseItem);
@@ -55,7 +55,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 			throw new Exception("Bos deger gecilemez!");
 		}
 		
-		for (ProgrammingLanguages language : this.languageRepository.findAll()) {
+		for (ProgrammingLanguages language : this.programmingLanguageRepository.findAll()) {
 			if (language.getName().equals(createProgrammingLanguagesRequest.getName())) {
 				throw new Exception("Sistemde boyle bir kayir mevcuttur!");
 			}
@@ -65,7 +65,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 		ProgrammingLanguages programmingLanguage = new ProgrammingLanguages();
 		programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
 		
-		languageRepository.save(programmingLanguage);
+		programmingLanguageRepository.save(programmingLanguage);
 		
 			
 		}
@@ -73,7 +73,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public void delete(DeleteProgrammingLanguagesRequest deleteProgrammingLanguagesRequest) {
-		languageRepository.deleteById(deleteProgrammingLanguagesRequest.getId());
+		programmingLanguageRepository.deleteById(deleteProgrammingLanguagesRequest.getId());
 		
 	}
 
@@ -84,23 +84,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 		throw new Exception("Bos deger gecilemez!");
 	}
 	
-	for (ProgrammingLanguages language : this.languageRepository.findAll()) {
+	for (ProgrammingLanguages language : this.programmingLanguageRepository.findAll()) {
 		if (language.getName().equals(updateProgrammingLanguagesRequest.getName())) {
 			throw new Exception("Programlama dili isimleri aynı olamaz!");
 		}
 		
 	}
 	
-	ProgrammingLanguages programmingLanguage = languageRepository.findById(updateProgrammingLanguagesRequest.getId()).get();
+	ProgrammingLanguages programmingLanguage = programmingLanguageRepository.findById(updateProgrammingLanguagesRequest.getId()).get();
 	programmingLanguage.setName(updateProgrammingLanguagesRequest.getName());
-	languageRepository.save(programmingLanguage);
+	programmingLanguageRepository.save(programmingLanguage);
 	
 }
 
 	@Override
 	public GetByIdProgrammingLanguageResponse getById(int id) {
 		
-		ProgrammingLanguages programmingLanguages = languageRepository.findById(id).get();
+		ProgrammingLanguages programmingLanguages = programmingLanguageRepository.findById(id).get();
 		GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse = new GetByIdProgrammingLanguageResponse();
 		getByIdProgrammingLanguageResponse.setName(programmingLanguages.getName());
 		

@@ -1,0 +1,71 @@
+package kodlama.io.Devs.business.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import kodlama.io.Devs.business.abstracts.ProgrammingLanguagesTechnologyServise;
+import kodlama.io.Devs.business.requests.CreatProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageTechonolgyResponse;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
+import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
+import kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguagesTechnologyRepository;
+
+
+public class ProgrammingLanguageTechonologyManager implements ProgrammingLanguagesTechnologyServise {
+
+	private ProgrammingLanguagesTechnologyRepository programmingLanguagesTechnologyRepository;
+	private ProgrammingLanguageRepository programmingLanguageRepository;
+	
+	
+	public ProgrammingLanguageTechonologyManager(
+			ProgrammingLanguagesTechnologyRepository programmingLanguagesTechnologyRepository,
+			ProgrammingLanguageRepository programmingLanguageRepository) {
+		
+		this.programmingLanguagesTechnologyRepository = programmingLanguagesTechnologyRepository;
+		this.programmingLanguageRepository = programmingLanguageRepository;
+	}
+
+	@Override
+	public List<GetAllProgrammingLanguagesResponse> getAll() {
+		List<ProgrammingLanguagesTechnology> programmingLanguagesTechnology = programmingLanguagesTechnologyRepository.findAll();
+		List<GetAllProgrammingLanguageTechonolgyResponse> getAllProgrammingLanguagesTechonologyResponses = new ArrayList<GetAllProgrammingLanguageTechonolgyResponse>();
+		
+		for (ProgrammingLanguagesTechnology programmingLanguagesTechnology : programmingLanguagesTechnology) {
+			
+			
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void add(CreateProgrammingLanguagesRequest createProgrammingLanguageTechnologyRequest) {
+		
+		
+	}
+
+	@Override
+	public void delete(DeleteProgrammingLanguagesRequest deleteProgrammingLanguageTechnologyRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(CreatProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public GetByIdProgrammingLanguageResponse getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

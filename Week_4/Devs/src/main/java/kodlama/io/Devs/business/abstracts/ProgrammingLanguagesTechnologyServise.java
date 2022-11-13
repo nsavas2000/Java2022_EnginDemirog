@@ -2,17 +2,19 @@ package kodlama.io.Devs.business.abstracts;
 
 import java.util.List;
 
-import kodlama.io.Devs.business.requests.CreatProgrammingLanguageTechnologyRequest;
-import kodlama.io.Devs.business.requests.CreateProgrammingLanguagesRequest;
-import kodlama.io.Devs.business.requests.DeleteProgrammingLanguagesRequest;
-import kodlama.io.Devs.business.responses.GetAllProgrammingLanguagesResponse;
-import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
+import kodlama.io.Devs.business.requests.CreateProgrammingLanguageTechnologyRequest;
+import kodlama.io.Devs.business.requests.DeleteProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.requests.UpdateProgrammingLanguageTechonologyRequest;
+import kodlama.io.Devs.business.responses.GetAllProgrammingLanguageTechonolgyResponse;
+import kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageTechnologyResponse;
 
 public interface ProgrammingLanguagesTechnologyServise {
-	List<GetAllProgrammingLanguagesResponse> getAll();
-	void add(CreateProgrammingLanguagesRequest createProgrammingLanguageTechnologyRequest);
-	void delete(DeleteProgrammingLanguagesRequest deleteProgrammingLanguageTechnologyRequest);
-	void update(CreatProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest);
-	GetByIdProgrammingLanguageResponse getById(int id);
+	
+	List<GetAllProgrammingLanguageTechonolgyResponse> getAll();
+	void add(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnology);
+	void delete(DeleteProgrammingLanguageTechonologyRequest deleteProgrammingLanguageTechnology);
+	void update(UpdateProgrammingLanguageTechonologyRequest updateProgrammingLanguageTechnology);
+	GetByIdProgrammingLanguageTechnologyResponse getById(int id);
+	
 
 }
